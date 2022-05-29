@@ -1,0 +1,311 @@
+{
+	"info": {
+		"_postman_id": "f08a513e-6487-40b8-af68-6314b53f3726",
+		"name": "Test Data Driven",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3984094"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"item": [
+				{
+					"name": "Create User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let ContentType = pm.variables.get(\"ContentType\");\r",
+									"let name = pm.variables.get(\"name\");\r",
+									"let job = pm.variables.get(\"job\");\r",
+									"\r",
+									"console.log(\"Content-Type: \" + ContentType);\r",
+									"console.log(\"name: \" + name);\r",
+									"console.log(\"job: \" + job);\r",
+									"\r",
+									"let statusCode = pm.variables.get(\"statusCode\");\r",
+									"\r",
+									"pm.test(\"Verify status code: \" + statusCode, function() {\r",
+									"    pm.response.to.have.statusCode(statusCode)\r",
+									"});\r",
+									"\r",
+									"// Load json schema\r",
+									"const userSchema = JSON.parse(pm.collectionVariables.get(\"userSchema\"));\r",
+									"\r",
+									"// pm.collectionVariables.set(\"userSchema\", JSON.stringify(userSchema));\r",
+									"// console.log(JSON.stringify(userSchema));\r",
+									"// console.log(\"userSchema: \" + userSchema);\r",
+									"console.log(\"Response Body: \" + pm.response.text());\r",
+									"console.log(\"Expected status code: \" + statusCode);\r",
+									"if(statusCode == 201) {\r",
+									"    // Verify schema\r",
+									"    pm.test(\"Verify schema\", function() {\r",
+									"        pm.response.to.have.jsonSchema(userSchema);\r",
+									"    });\r",
+									"\r",
+									"    let jsonData = pm.response.json();\r",
+									"    let expectedName = pm.variables.get(\"expectedName\");\r",
+									"    let expectedJob = pm.variables.get(\"expectedJob\");\r",
+									"\r",
+									"    console.log(\"Expected name: \" + expectedName);\r",
+									"    console.log(\"Expected job: \" + expectedJob);\r",
+									"    // Verify name\r",
+									"    pm.test(\"Verify name\", function() {\r",
+									"        pm.expect(jsonData.name).to.be.eqls(expectedName)\r",
+									"    });\r",
+									"    // Verify job\r",
+									"    pm.test(\"Verify job\", function() {\r",
+									"        pm.expect(jsonData.job).to.be.eqls(expectedJob);\r",
+									"    });\r",
+									"    // Extract data and write to collection variables\r",
+									"    console.log(\"user id: \" + jsonData.id);\r",
+									"    pm.collectionVariables.set(\"id\", jsonData.id);\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{ContentType}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": {{name}},\r\n    \"job\": {{job}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CityPairs",
+			"item": [
+				{
+					"name": "Get CityPairs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const cityPairsSchema = JSON.parse(pm.collectionVariables.get(\"cityPairsSchema\"));\r",
+									"\r",
+									"// Verify schema\r",
+									"pm.test(\"Verify schema\", function() {\r",
+									"        pm.response.to.have.jsonSchema(cityPairsSchema);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://2d4fa27f-696f-4f9b-a5a0-1636e755cfb5.mock.pstmn.io/cityPairs",
+							"protocol": "https",
+							"host": [
+								"2d4fa27f-696f-4f9b-a5a0-1636e755cfb5",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"cityPairs"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get CityPairs",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://2d4fa27f-696f-4f9b-a5a0-1636e755cfb5.mock.pstmn.io/cityPairs",
+									"protocol": "https",
+									"host": [
+										"2d4fa27f-696f-4f9b-a5a0-1636e755cfb5",
+										"mock",
+										"pstmn",
+										"io"
+									],
+									"path": [
+										"cityPairs"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 27 May 2022 08:25:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=97a7f33dffbee598"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=f293c2f3b2887eac"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1653639756"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"href\": \"/cityPairs/YVR-YHZ\",\n  \"identifier\": \"YVR-YHZ\",\n  \"departure\": {\n    \"airport\": {\n      \"href\": \"/airports/YVR\",\n      \"code\": \"YVR\",\n      \"name\": \"Vancouver International\"\n    }\n  },\n  \"arrival\": {\n    \"airport\": {\n      \"href\": \"/airports/YHZ\",\n      \"code\": \"YHZ\",\n      \"name\": \"Halifax International\"\n    }\n  },\n  \"validConnectionAirports\": [\n    {\n      \"href\": \"/airports/YYZ\",\n      \"code\": \"YYZ\",\n      \"name\": \"Toronto Pearson\"\n    }\n  ],\n  \"fareStatuses\": {\n    \"expired\": false,\n    \"lapsed\": false,\n    \"current\": true,\n    \"future\": false\n  },\n  \"chargeStatuses\": {\n    \"expired\": false,\n    \"lapsed\": false,\n    \"current\": true,\n    \"future\": false\n  },\n  \"taxConfiguration\": {\n    \"href\": \"/taxConfigurations/ijZS0t2ƒmaj2aZgJƒ0sQƒy8Gsƒs1K2WdTV4Swjst1Ql=\",\n    \"key\": \"ijZS0t2ƒmaj2aZgJƒ0sQƒy8Gsƒs1K2WdTV4Swjst1Ql=\",\n    \"name\": \"TAX EXEMPT\"\n  },\n  \"loyaltyPointsEarned\": 100,\n  \"loyaltyBaseCurrencyFareMultiplier\": null,\n  \"loyaltyFarePercent\": null,\n  \"groupBookingCount\": {\n    \"minimumPassengerCount\": 5,\n    \"maximumPassengerCount\": 10\n  },\n  \"routeType\": {\n    \"href\": \"/routeTypes/tfCeB5¥mircWvs2\",\n    \"key\": \"tfCeB5¥mircWvs2\",\n    \"identifier\": \"DOM\"\n  },\n  \"travelOptionCriteria\": {\n    \"maximumOptionCount\": 3,\n    \"maximumSegmentCount\": 2,\n    \"minimumStopOverMinutes\": 5,\n    \"maximumStopOverMinutes\": 90\n  },\n  \"fares\": [\n    {\n      \"href\": \"/cityPairs/YVR-YHZ/fares/HwTGLN3bf3CMs=\",\n      \"key\": \"HwTGLN3bf3CMs=\",\n      \"fareClass\": {\n        \"href\": \"/fareClasses/wb4xb3F9Evee1nOH8bSvfc4Tho49bdnSLPZxoKni%C2%A5nY=\",\n        \"key\": \"wb4xb3F9Evee1nOH8bSvfc4Tho49bdnSLPZxoKni¥nY=\",\n        \"code\": \"YOWFF\",\n        \"description\": \"One Way Full-Fare\"\n      },\n      \"onSaleFrom\": \"2022-04-27 08:11:45Z\",\n      \"onSaleTo\": \"2022-06-26 08:11:45Z\",\n      \"travelFrom\": \"2022-06-06 08:11:45Z\",\n      \"travelTo\": \"2022-07-26 08:11:45Z\",\n      \"status\": {\n        \"expired\": false,\n        \"lapsed\": false,\n        \"current\": true,\n        \"future\": false\n      },\n      \"tripDepartureAirport\": {\n        \"href\": \"/airports/YVR\",\n        \"code\": \"YVR\",\n        \"name\": \"Vancouver International\"\n      },\n      \"specifiedTaxConfiguration\": {\n        \"overridden\": true,\n        \"taxConfiguration\": {\n          \"href\": \"/taxConfigurations/ijZS0t2ƒmaj2aZgJƒ0sQƒy8Gsƒs1K2WdTV4Swjst1Ql=\",\n          \"key\": \"ijZS0t2ƒmaj2aZgJƒ0sQƒy8Gsƒs1K2WdTV4Swjst1Ql=\",\n          \"name\": \"TAX EXEMPT\"\n        }\n      },\n      \"chargeAmount\": {\n        \"baseAmount\": 123.45,\n        \"currency\": {\n          \"href\": \"/currencies/CAD\",\n          \"code\": \"CAD\",\n          \"description\": \"Canadian Dollar\",\n          \"baseCurrency\": true\n        }\n      },\n      \"chargeOverrides\": [\n        {\n          \"currencyAmounts\": [\n            {\n              \"baseAmount\": 456.78,\n              \"currency\": {\n                \"href\": \"/currencies/USD\",\n                \"code\": \"USD\",\n                \"description\": \"United States Dollar\",\n                \"baseCurrency\": false\n              }\n            }\n          ]\n        }\n      ],\n      \"loyaltyPointsCharge\": 50,\n      \"mirrorFare\": {\n        \"linked\": true,\n        \"fare\": {\n          \"href\": \"/cityPairs/YHZ-YVR/fares/EmTGEnRbf3CMs=\",\n          \"key\": \"EmTGEnRbf3CMs=\"\n        }\n      }\n    }\n  ],\n  \"charges\": [\n    {\n      \"href\": \"/cityPairs/YVR-YHZ/charges/HwTGLN3bf3CMs=\",\n      \"key\": \"HwTGLN3bf3CMs=\",\n      \"surcharge\": {\n        \"href\": \"/surcharges/X2fXNzLhG1ZdI6mgOVBri8ETHP1\",\n        \"key\": \"X2fXNzLhG1ZdI6mgOVBri8ETHP1¥z0ESQynMzbzZtIw=\",\n        \"identifier\": \"AXD\",\n        \"description\": \"Airport Tax Domestic\"\n      },\n      \"applicableFrom\": \"2022-04-27 08:11:45Z\",\n      \"applicableTo\": \"2022-06-26 08:11:45Z\",\n      \"status\": {\n        \"expired\": false,\n        \"lapsed\": false,\n        \"current\": true,\n        \"future\": false\n      },\n      \"tripDepartureAirport\": {\n        \"href\": \"/airports/YVR\",\n        \"code\": \"YVR\",\n        \"name\": \"Vancouver International\"\n      },\n      \"chargeAmount\": {\n        \"baseAmount\": 123.45,\n        \"currency\": {\n          \"href\": \"/currencies/CAD\",\n          \"code\": \"CAD\",\n          \"description\": \"Canadian Dollar\",\n          \"baseCurrency\": true\n        }\n      },\n      \"percentageChargeAmount\": null,\n      \"chargeOverrides\": [\n        {\n          \"currencyAmounts\": [\n            {\n              \"baseAmount\": 456.78,\n              \"currency\": {\n                \"href\": \"/currencies/USD\",\n                \"code\": \"USD\",\n                \"description\": \"United States Dollar\",\n                \"baseCurrency\": false\n              }\n            }\n          ]\n        }\n      ],\n      \"applicableFareClasses\": [\n        {\n          \"href\": \"/fareClasses/wb4xb3F9Evee1nOH8bSvfc4Tho49bdnSLPZxoKni%C2%A5nY=\",\n          \"key\": \"wb4xb3F9Evee1nOH8bSvfc4Tho49bdnSLPZxoKni¥nY=\",\n          \"code\": \"YOWFF\",\n          \"description\": \"One Way Full-Fare\"\n        }\n      ],\n      \"applicableConnectionAirports\": [\n        {\n          \"href\": \"/airports/YVR\",\n          \"code\": \"YVR\",\n          \"name\": \"Vancouver International\"\n        }\n      ],\n      \"mirrorCharge\": {\n        \"linked\": true,\n        \"charge\": {\n          \"href\": \"/cityPairs/YHZ-YVR/charges/EmTGEnRbf3CMs=\",\n          \"key\": \"EmTGEnRbf3CMs=\"\n        }\n      }\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "name",
+			"value": "\"testName\"",
+			"type": "string"
+		},
+		{
+			"key": "job",
+			"value": "\"testJob\"",
+			"type": "string"
+		},
+		{
+			"key": "statusCode",
+			"value": "201",
+			"type": "string"
+		},
+		{
+			"key": "ContentType",
+			"value": "application/json",
+			"type": "string"
+		},
+		{
+			"key": "id",
+			"value": ""
+		},
+		{
+			"key": "expectedName",
+			"value": "testName",
+			"type": "string"
+		},
+		{
+			"key": "expectedJob",
+			"value": "testJob",
+			"type": "string"
+		},
+		{
+			"key": "userSchema",
+			"value": "{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"job\":{\"type\":\"string\"},\"id\":{\"type\":\"string\",\"pattern\":\"^[0-9]+$\"},\"createdAt\":{\"type\":\"string\",\"pattern\":\"^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}\\\\.\\\\d{3}Z$\"}},\"required\":[\"createdAt\",\"id\",\"job\",\"name\"],\"additionalProperties\":false}"
+		},
+		{
+			"key": "cityPairsSchema",
+			"value": "{\"type\":\"object\",\"required\":[\"href\",\"identifier\",\"departure\",\"arrival\",\"validConnectionAirports\",\"fareStatuses\",\"chargeStatuses\",\"taxConfiguration\",\"loyaltyPointsEarned\",\"loyaltyBaseCurrencyFareMultiplier\",\"loyaltyFarePercent\",\"groupBookingCount\",\"routeType\",\"travelOptionCriteria\",\"fares\",\"charges\"],\"properties\":{\"href\":{\"type\":\"string\"},\"identifier\":{\"type\":\"string\"},\"departure\":{\"type\":\"object\",\"required\":[\"airport\"],\"properties\":{\"airport\":{\"type\":\"object\",\"required\":[\"href\",\"code\",\"name\"],\"properties\":{\"href\":{\"type\":\"string\"},\"code\":{\"type\":\"string\",\"pattern\":\"^[A-Z]{3}$\"},\"name\":{\"type\":\"string\"}}}}},\"arrival\":{\"type\":\"object\",\"required\":[\"airport\"],\"properties\":{\"airport\":{\"type\":\"object\",\"required\":[\"href\",\"code\",\"name\"],\"properties\":{\"href\":{\"type\":\"string\"},\"code\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}}}}},\"validConnectionAirports\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"href\",\"code\",\"name\"],\"properties\":{\"href\":{\"type\":\"string\"},\"code\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}}}},\"fareStatuses\":{\"type\":\"object\",\"required\":[\"expired\",\"lapsed\",\"current\",\"future\"],\"properties\":{\"expired\":{\"type\":\"boolean\"},\"lapsed\":{\"type\":\"boolean\"},\"current\":{\"type\":\"boolean\"},\"future\":{\"type\":\"boolean\"}}},\"chargeStatuses\":{\"type\":\"object\",\"required\":[\"expired\",\"lapsed\",\"current\",\"future\"],\"properties\":{\"expired\":{\"type\":\"boolean\"},\"lapsed\":{\"type\":\"boolean\"},\"current\":{\"type\":\"boolean\"},\"future\":{\"type\":\"boolean\"}}},\"taxConfiguration\":{\"type\":\"object\",\"required\":[\"href\",\"key\",\"name\"],\"properties\":{\"href\":{\"type\":\"string\"},\"key\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}}},\"loyaltyPointsEarned\":{\"type\":\"integer\"},\"loyaltyBaseCurrencyFareMultiplier\":{\"type\":\"null\"},\"loyaltyFarePercent\":{\"type\":\"null\"},\"groupBookingCount\":{\"type\":\"object\",\"required\":[\"minimumPassengerCount\",\"maximumPassengerCount\"],\"properties\":{\"minimumPassengerCount\":{\"type\":\"integer\"},\"maximumPassengerCount\":{\"type\":\"integer\"}}},\"routeType\":{\"type\":\"object\",\"required\":[\"href\",\"key\",\"identifier\"],\"properties\":{\"href\":{\"type\":\"string\"},\"key\":{\"type\":\"string\"},\"identifier\":{\"type\":\"string\"}}},\"travelOptionCriteria\":{\"type\":\"object\",\"required\":[\"maximumOptionCount\",\"maximumSegmentCount\",\"minimumStopOverMinutes\",\"maximumStopOverMinutes\"],\"properties\":{\"maximumOptionCount\":{\"type\":\"integer\"},\"maximumSegmentCount\":{\"type\":\"integer\"},\"minimumStopOverMinutes\":{\"type\":\"integer\"},\"maximumStopOverMinutes\":{\"type\":\"integer\"}}},\"fares\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"href\",\"key\",\"fareClass\",\"onSaleFrom\",\"onSaleTo\",\"travelFrom\",\"travelTo\",\"status\",\"tripDepartureAirport\",\"specifiedTaxConfiguration\",\"chargeAmount\",\"chargeOverrides\",\"loyaltyPointsCharge\",\"mirrorFare\"],\"properties\":{\"href\":{\"type\":\"string\"},\"key\":{\"type\":\"string\"},\"fareClass\":{\"type\":\"object\",\"required\":[\"href\",\"key\",\"code\",\"description\"],\"properties\":{\"href\":{\"type\":\"string\"},\"key\":{\"type\":\"string\"},\"code\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"}}},\"onSaleFrom\":{\"type\":\"string\"},\"onSaleTo\":{\"type\":\"string\"},\"travelFrom\":{\"type\":\"string\"},\"travelTo\":{\"type\":\"string\"},\"status\":{\"type\":\"object\",\"required\":[\"expired\",\"lapsed\",\"current\",\"future\"],\"properties\":{\"expired\":{\"type\":\"boolean\"},\"lapsed\":{\"type\":\"boolean\"},\"current\":{\"type\":\"boolean\"},\"future\":{\"type\":\"boolean\"}}},\"tripDepartureAirport\":{\"type\":\"object\",\"required\":[\"href\",\"code\",\"name\"],\"properties\":{\"href\":{\"type\":\"string\"},\"code\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}}},\"specifiedTaxConfiguration\":{\"type\":\"object\",\"required\":[\"overridden\",\"taxConfiguration\"],\"properties\":{\"overridden\":{\"type\":\"boolean\"},\"taxConfiguration\":{\"type\":\"object\",\"required\":[\"href\",\"key\",\"name\"],\"properties\":{\"href\":{\"type\":\"string\"},\"key\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}}}}},\"chargeAmount\":{\"type\":\"object\",\"required\":[\"baseAmount\",\"currency\"],\"properties\":{\"baseAmount\":{\"type\":\"number\"},\"currency\":{\"type\":\"object\",\"required\":[\"href\",\"code\",\"description\",\"baseCurrency\"],\"properties\":{\"href\":{\"type\":\"string\"},\"code\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"baseCurrency\":{\"type\":\"boolean\"}}}}},\"chargeOverrides\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"currencyAmounts\"],\"properties\":{\"currencyAmounts\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"baseAmount\",\"currency\"],\"properties\":{\"baseAmount\":{\"type\":\"number\"},\"currency\":{\"type\":\"object\",\"required\":[\"href\",\"code\",\"description\",\"baseCurrency\"],\"properties\":{\"href\":{\"type\":\"string\"},\"code\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"baseCurrency\":{\"type\":\"boolean\"}}}}}}}}},\"loyaltyPointsCharge\":{\"type\":\"integer\"},\"mirrorFare\":{\"type\":\"object\",\"required\":[\"linked\",\"fare\"],\"properties\":{\"linked\":{\"type\":\"boolean\"},\"fare\":{\"type\":\"object\",\"required\":[\"href\",\"key\"],\"properties\":{\"href\":{\"type\":\"string\"},\"key\":{\"type\":\"string\"}}}}}}}},\"charges\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"href\",\"key\",\"surcharge\",\"applicableFrom\",\"applicableTo\",\"status\",\"tripDepartureAirport\",\"chargeAmount\",\"percentageChargeAmount\",\"chargeOverrides\",\"applicableFareClasses\",\"applicableConnectionAirports\",\"mirrorCharge\"],\"properties\":{\"href\":{\"type\":\"string\"},\"key\":{\"type\":\"string\"},\"surcharge\":{\"type\":\"object\",\"required\":[\"href\",\"key\",\"identifier\",\"description\"],\"properties\":{\"href\":{\"type\":\"string\"},\"key\":{\"type\":\"string\"},\"identifier\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"}}},\"applicableFrom\":{\"type\":\"string\"},\"applicableTo\":{\"type\":\"string\"},\"status\":{\"type\":\"object\",\"required\":[\"expired\",\"lapsed\",\"current\",\"future\"],\"properties\":{\"expired\":{\"type\":\"boolean\"},\"lapsed\":{\"type\":\"boolean\"},\"current\":{\"type\":\"boolean\"},\"future\":{\"type\":\"boolean\"}}},\"tripDepartureAirport\":{\"type\":\"object\",\"required\":[\"href\",\"code\",\"name\"],\"properties\":{\"href\":{\"type\":\"string\"},\"code\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}}},\"chargeAmount\":{\"type\":\"object\",\"required\":[\"baseAmount\",\"currency\"],\"properties\":{\"baseAmount\":{\"type\":\"number\"},\"currency\":{\"type\":\"object\",\"required\":[\"href\",\"code\",\"description\",\"baseCurrency\"],\"properties\":{\"href\":{\"type\":\"string\"},\"code\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"baseCurrency\":{\"type\":\"boolean\"}}}}},\"percentageChargeAmount\":{\"type\":\"null\"},\"chargeOverrides\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"currencyAmounts\"],\"properties\":{\"currencyAmounts\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"baseAmount\",\"currency\"],\"properties\":{\"baseAmount\":{\"type\":\"number\"},\"currency\":{\"type\":\"object\",\"required\":[\"href\",\"code\",\"description\",\"baseCurrency\"],\"properties\":{\"href\":{\"type\":\"string\"},\"code\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"baseCurrency\":{\"type\":\"boolean\"}}}}}}}}},\"applicableFareClasses\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"href\",\"key\",\"code\",\"description\"],\"properties\":{\"href\":{\"type\":\"string\"},\"key\":{\"type\":\"string\"},\"code\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"}}}},\"applicableConnectionAirports\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"href\",\"code\",\"name\"],\"properties\":{\"href\":{\"type\":\"string\"},\"code\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}}}},\"mirrorCharge\":{\"type\":\"object\",\"required\":[\"linked\",\"charge\"],\"properties\":{\"linked\":{\"type\":\"boolean\"},\"charge\":{\"type\":\"object\",\"required\":[\"href\",\"key\"],\"properties\":{\"href\":{\"type\":\"string\"},\"key\":{\"type\":\"string\"}}}}}}}}}}",
+			"type": "string"
+		}
+	]
+}

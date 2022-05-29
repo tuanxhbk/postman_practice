@@ -1,0 +1,66 @@
+[
+    {
+        "ContentType": "application/json",
+        "name": "\"testName\"",
+        "job": "\"testJob\"",
+        "statusCode": 201,
+        "expectedName": "testName",
+        "expectedJob": "testJob"
+    },
+    {
+        "ContentType": "application/json",
+        "name": 123,
+        "job": "\"testJob\"",
+        "statusCode": 201,
+        "expectedName": 123,
+        "expectedJob": "testJob"
+    },
+    {
+        "ContentType": "application/json",
+        "name": "\"testName\"",
+        "job": 123,
+        "statusCode": 201,
+        "expectedName": "testName",
+        "expectedJob": 123
+    },
+    {
+        "ContentType": "application/json",
+        "name": 123,
+        "job": 123,
+        "statusCode": 201,
+        "expectedName": 123,
+        "expectedJob": 123
+    },
+    {
+        "ContentType": "application/json",
+        "name": "\"\"",
+        "job": "\"\"",
+        "statusCode": 201,
+        "expectedName": "",
+        "expectedJob": ""
+    },
+    {
+        "ContentType": "application/json",
+        "name": "",
+        "job": "",
+        "statusCode": 400,
+        "expectedName": "",
+        "expectedJob": ""
+    },
+    {
+        "ContentType": "text/xml",
+        "name": "\"testName\"",
+        "job": "\"testJob\"",
+        "statusCode": 400,
+        "expectedName": "testName",
+        "expectedJob": "testJob"
+    },
+    {
+        "ContentType": "",
+        "name": "\"testName\"",
+        "job": "\"testJob\"",
+        "statusCode": 400,
+        "expectedName": "testName",
+        "expectedJob": "testJob"
+    }
+]

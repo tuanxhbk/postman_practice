@@ -1,0 +1,750 @@
+{
+    "type": "object",
+    "required": [
+        "href",
+        "identifier",
+        "departure",
+        "arrival",
+        "validConnectionAirports",
+        "fareStatuses",
+        "chargeStatuses",
+        "taxConfiguration",
+        "loyaltyPointsEarned",
+        "loyaltyBaseCurrencyFareMultiplier",
+        "loyaltyFarePercent",
+        "groupBookingCount",
+        "routeType",
+        "travelOptionCriteria",
+        "fares",
+        "charges"
+    ],
+    "properties": {
+        "href": {
+            "type": "string"
+        },
+        "identifier": {
+            "type": "string"
+        },
+        "departure": {
+            "type": "object",
+            "required": [
+                "airport"
+            ],
+            "properties": {
+                "airport": {
+                    "type": "object",
+                    "required": [
+                        "href",
+                        "code",
+                        "name"
+                    ],
+                    "properties": {
+                        "href": {
+                            "type": "string"
+                        },
+                        "code": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "arrival": {
+            "type": "object",
+            "required": [
+                "airport"
+            ],
+            "properties": {
+                "airport": {
+                    "type": "object",
+                    "required": [
+                        "href",
+                        "code",
+                        "name"
+                    ],
+                    "properties": {
+                        "href": {
+                            "type": "string"
+                        },
+                        "code": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "validConnectionAirports": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "href",
+                    "code",
+                    "name"
+                ],
+                "properties": {
+                    "href": {
+                        "type": "string"
+                    },
+                    "code": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "fareStatuses": {
+            "type": "object",
+            "required": [
+                "expired",
+                "lapsed",
+                "current",
+                "future"
+            ],
+            "properties": {
+                "expired": {
+                    "type": "boolean"
+                },
+                "lapsed": {
+                    "type": "boolean"
+                },
+                "current": {
+                    "type": "boolean"
+                },
+                "future": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "chargeStatuses": {
+            "type": "object",
+            "required": [
+                "expired",
+                "lapsed",
+                "current",
+                "future"
+            ],
+            "properties": {
+                "expired": {
+                    "type": "boolean"
+                },
+                "lapsed": {
+                    "type": "boolean"
+                },
+                "current": {
+                    "type": "boolean"
+                },
+                "future": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "taxConfiguration": {
+            "type": "object",
+            "required": [
+                "href",
+                "key",
+                "name"
+            ],
+            "properties": {
+                "href": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "loyaltyPointsEarned": {
+            "type": "integer"
+        },
+        "loyaltyBaseCurrencyFareMultiplier": {
+            "type": "null"
+        },
+        "loyaltyFarePercent": {
+            "type": "null"
+        },
+        "groupBookingCount": {
+            "type": "object",
+            "required": [
+                "minimumPassengerCount",
+                "maximumPassengerCount"
+            ],
+            "properties": {
+                "minimumPassengerCount": {
+                    "type": "integer"
+                },
+                "maximumPassengerCount": {
+                    "type": "integer"
+                }
+            }
+        },
+        "routeType": {
+            "type": "object",
+            "required": [
+                "href",
+                "key",
+                "identifier"
+            ],
+            "properties": {
+                "href": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "identifier": {
+                    "type": "string"
+                }
+            }
+        },
+        "travelOptionCriteria": {
+            "type": "object",
+            "required": [
+                "maximumOptionCount",
+                "maximumSegmentCount",
+                "minimumStopOverMinutes",
+                "maximumStopOverMinutes"
+            ],
+            "properties": {
+                "maximumOptionCount": {
+                    "type": "integer"
+                },
+                "maximumSegmentCount": {
+                    "type": "integer"
+                },
+                "minimumStopOverMinutes": {
+                    "type": "integer"
+                },
+                "maximumStopOverMinutes": {
+                    "type": "integer"
+                }
+            }
+        },
+        "fares": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "href",
+                    "key",
+                    "fareClass",
+                    "onSaleFrom",
+                    "onSaleTo",
+                    "travelFrom",
+                    "travelTo",
+                    "status",
+                    "tripDepartureAirport",
+                    "specifiedTaxConfiguration",
+                    "chargeAmount",
+                    "chargeOverrides",
+                    "loyaltyPointsCharge",
+                    "mirrorFare"
+                ],
+                "properties": {
+                    "href": {
+                        "type": "string"
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "fareClass": {
+                        "type": "object",
+                        "required": [
+                            "href",
+                            "key",
+                            "code",
+                            "description"
+                        ],
+                        "properties": {
+                            "href": {
+                                "type": "string"
+                            },
+                            "key": {
+                                "type": "string"
+                            },
+                            "code": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "onSaleFrom": {
+                        "type": "string"
+                    },
+                    "onSaleTo": {
+                        "type": "string"
+                    },
+                    "travelFrom": {
+                        "type": "string"
+                    },
+                    "travelTo": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "object",
+                        "required": [
+                            "expired",
+                            "lapsed",
+                            "current",
+                            "future"
+                        ],
+                        "properties": {
+                            "expired": {
+                                "type": "boolean"
+                            },
+                            "lapsed": {
+                                "type": "boolean"
+                            },
+                            "current": {
+                                "type": "boolean"
+                            },
+                            "future": {
+                                "type": "boolean"
+                            }
+                        }
+                    },
+                    "tripDepartureAirport": {
+                        "type": "object",
+                        "required": [
+                            "href",
+                            "code",
+                            "name"
+                        ],
+                        "properties": {
+                            "href": {
+                                "type": "string"
+                            },
+                            "code": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "specifiedTaxConfiguration": {
+                        "type": "object",
+                        "required": [
+                            "overridden",
+                            "taxConfiguration"
+                        ],
+                        "properties": {
+                            "overridden": {
+                                "type": "boolean"
+                            },
+                            "taxConfiguration": {
+                                "type": "object",
+                                "required": [
+                                    "href",
+                                    "key",
+                                    "name"
+                                ],
+                                "properties": {
+                                    "href": {
+                                        "type": "string"
+                                    },
+                                    "key": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "chargeAmount": {
+                        "type": "object",
+                        "required": [
+                            "baseAmount",
+                            "currency"
+                        ],
+                        "properties": {
+                            "baseAmount": {
+                                "type": "number"
+                            },
+                            "currency": {
+                                "type": "object",
+                                "required": [
+                                    "href",
+                                    "code",
+                                    "description",
+                                    "baseCurrency"
+                                ],
+                                "properties": {
+                                    "href": {
+                                        "type": "string"
+                                    },
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "baseCurrency": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "chargeOverrides": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "currencyAmounts"
+                            ],
+                            "properties": {
+                                "currencyAmounts": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "required": [
+                                            "baseAmount",
+                                            "currency"
+                                        ],
+                                        "properties": {
+                                            "baseAmount": {
+                                                "type": "number"
+                                            },
+                                            "currency": {
+                                                "type": "object",
+                                                "required": [
+                                                    "href",
+                                                    "code",
+                                                    "description",
+                                                    "baseCurrency"
+                                                ],
+                                                "properties": {
+                                                    "href": {
+                                                        "type": "string"
+                                                    },
+                                                    "code": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": {
+                                                        "type": "string"
+                                                    },
+                                                    "baseCurrency": {
+                                                        "type": "boolean"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "loyaltyPointsCharge": {
+                        "type": "integer"
+                    },
+                    "mirrorFare": {
+                        "type": "object",
+                        "required": [
+                            "linked",
+                            "fare"
+                        ],
+                        "properties": {
+                            "linked": {
+                                "type": "boolean"
+                            },
+                            "fare": {
+                                "type": "object",
+                                "required": [
+                                    "href",
+                                    "key"
+                                ],
+                                "properties": {
+                                    "href": {
+                                        "type": "string"
+                                    },
+                                    "key": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "charges": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "href",
+                    "key",
+                    "surcharge",
+                    "applicableFrom",
+                    "applicableTo",
+                    "status",
+                    "tripDepartureAirport",
+                    "chargeAmount",
+                    "percentageChargeAmount",
+                    "chargeOverrides",
+                    "applicableFareClasses",
+                    "applicableConnectionAirports",
+                    "mirrorCharge"
+                ],
+                "properties": {
+                    "href": {
+                        "type": "string"
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "surcharge": {
+                        "type": "object",
+                        "required": [
+                            "href",
+                            "key",
+                            "identifier",
+                            "description"
+                        ],
+                        "properties": {
+                            "href": {
+                                "type": "string"
+                            },
+                            "key": {
+                                "type": "string"
+                            },
+                            "identifier": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "applicableFrom": {
+                        "type": "string"
+                    },
+                    "applicableTo": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "object",
+                        "required": [
+                            "expired",
+                            "lapsed",
+                            "current",
+                            "future"
+                        ],
+                        "properties": {
+                            "expired": {
+                                "type": "boolean"
+                            },
+                            "lapsed": {
+                                "type": "boolean"
+                            },
+                            "current": {
+                                "type": "boolean"
+                            },
+                            "future": {
+                                "type": "boolean"
+                            }
+                        }
+                    },
+                    "tripDepartureAirport": {
+                        "type": "object",
+                        "required": [
+                            "href",
+                            "code",
+                            "name"
+                        ],
+                        "properties": {
+                            "href": {
+                                "type": "string"
+                            },
+                            "code": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "chargeAmount": {
+                        "type": "object",
+                        "required": [
+                            "baseAmount",
+                            "currency"
+                        ],
+                        "properties": {
+                            "baseAmount": {
+                                "type": "number"
+                            },
+                            "currency": {
+                                "type": "object",
+                                "required": [
+                                    "href",
+                                    "code",
+                                    "description",
+                                    "baseCurrency"
+                                ],
+                                "properties": {
+                                    "href": {
+                                        "type": "string"
+                                    },
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "baseCurrency": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "percentageChargeAmount": {
+                        "type": "null"
+                    },
+                    "chargeOverrides": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "currencyAmounts"
+                            ],
+                            "properties": {
+                                "currencyAmounts": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "required": [
+                                            "baseAmount",
+                                            "currency"
+                                        ],
+                                        "properties": {
+                                            "baseAmount": {
+                                                "type": "number"
+                                            },
+                                            "currency": {
+                                                "type": "object",
+                                                "required": [
+                                                    "href",
+                                                    "code",
+                                                    "description",
+                                                    "baseCurrency"
+                                                ],
+                                                "properties": {
+                                                    "href": {
+                                                        "type": "string"
+                                                    },
+                                                    "code": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": {
+                                                        "type": "string"
+                                                    },
+                                                    "baseCurrency": {
+                                                        "type": "boolean"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "applicableFareClasses": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "href",
+                                "key",
+                                "code",
+                                "description"
+                            ],
+                            "properties": {
+                                "href": {
+                                    "type": "string"
+                                },
+                                "key": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "applicableConnectionAirports": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "href",
+                                "code",
+                                "name"
+                            ],
+                            "properties": {
+                                "href": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "mirrorCharge": {
+                        "type": "object",
+                        "required": [
+                            "linked",
+                            "charge"
+                        ],
+                        "properties": {
+                            "linked": {
+                                "type": "boolean"
+                            },
+                            "charge": {
+                                "type": "object",
+                                "required": [
+                                    "href",
+                                    "key"
+                                ],
+                                "properties": {
+                                    "href": {
+                                        "type": "string"
+                                    },
+                                    "key": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
