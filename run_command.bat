@@ -2,13 +2,14 @@
 setlocal enabledelayedexpansion
 
 REM --- Set csv report folder ---
-set csv_folder="csv_report_%BUILD_NUMBER%"
+set report_csv_export= --reporter-csv-export 
+set csv_folder=csv_report_%BUILD_NUMBER%
 
 REM --- Read commands from file ---
 set count=0
 for /f "tokens=*" %%x in (command.txt) do (
     set /a count+=1
-    set var[!count!]=%%x + " --reporter-csv-export " + %csv_folder%
+    set var[!count!]=%%x%report_csv_export%%csv_folder%
 )
 REM echo %count%
 REM echo %var[10]%
