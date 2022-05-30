@@ -7,5 +7,5 @@
 ### newman run "Test Data Driven.postman_collection.json" -e reqres.in.postman_environment.json -d Data.json --disable-unicode --reporters cli,html,htmlextra
 ###
 ### Run from Jenkins - Github
-newman run "practice1\Test Data Driven.postman_collection.json" -e "practice1\reqres.in.postman_environment.json" -d "practice1\Data.csv" --disable-unicode --reporters cli,html,allure,htmlextra,csv --reporter-csv-export %csv_folder%
+newman run "practice1\Test Data Driven.postman_collection.json" -e "practice1\reqres.in.postman_environment.json" -d "practice1\Data.csv" --disable-unicode --reporters cli,html,allure,htmlextra,csv
 newman run "practice1\Test Data Driven.postman_collection.json" -e "practice1\reqres.in.postman_environment.json" -d "practice1\Data.json" --disable-unicode --reporters cli,html,allure,htmlextra,csv
