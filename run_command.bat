@@ -16,6 +16,9 @@ set comment="###"
 
 set csv_folder="csv_report_%BUILD_NUMBER%"
 
+echo %csv_folder%
+mkdir -p %csv_folder%
+
 REM --- Run command ---
 for /l %%n in (1,1,%count%) do (
     Echo.!var[%%n]! | findstr /C:%comment%>nul || (
