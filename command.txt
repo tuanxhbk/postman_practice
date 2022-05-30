@@ -1,3 +1,4 @@
 ### Run from Jenkins - Github
-newman run "practice1\Test Data Driven.postman_collection.json" -e "practice1\reqres.in.postman_environment.json" -d "practice1\Data.csv"
-newman run "practice1\Test Data Driven.postman_collection.json" -e "practice1\reqres.in.postman_environment.json" -d "practice1\Data.json"
+newman run "practice1\Test Data Driven.postman_collection.json" -e "practice1\reqres.in.postman_environment.json" -d "practice1\Data.csv" --folder "Create User"
+newman run "practice1\Test Data Driven.postman_collection.json" -e "practice1\reqres.in.postman_environment.json" --folder "CityPairs"
+### newman run "practice1\Test Data Driven.postman_collection.json" -e "practice1\reqres.in.postman_environment.json" -d "practice1\Data.json"
