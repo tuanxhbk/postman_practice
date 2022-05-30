@@ -1,14 +1,14 @@
 @echo off
 setlocal enabledelayedexpansion
 
-REM --- Set csv report folder ---
+REM --- Set report folder ---
 set root_report_folder=report_build_%BUILD_NUMBER%
 set report_csv_export= --reporter-csv-export 
-set csv_folder=%root_report_folder%\csv_report_%BUILD_NUMBER%
+set csv_folder=%root_report_folder%\csv_report
 set reporter_allure_export= --reporter-allure-export 
 set allure_folder=%root_report_folder%\allure-results
 set reporter_htmlextra_export= --reporter-htmlextra-export 
-set htmlextra_folder=%root_report_folder%\htmlextra_%BUILD_NUMBER%
+set htmlextra_folder=%root_report_folder%\htmlextra
 
 REM --- Read commands from file ---
 set count=0
@@ -23,11 +23,11 @@ REM call %var[10]%
 REM --- Define comment out prefix ---
 set comment="###"
 
-echo %csv_folder%
+REM echo %csv_folder%
 mkdir %csv_folder%
 mkdir %htmlextra_folder%
 
-REM --- Run command ---
+REM --- Run commands ---
 for /l %%n in (1,1,%count%) do (
     Echo.!var[%%n]! | findstr /C:%comment%>nul || (
     echo !var[%%n]!

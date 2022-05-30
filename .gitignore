@@ -2,3 +2,4 @@ allure-results/
 newman/
 allure-report/
 csv-report/
+report_build_/
