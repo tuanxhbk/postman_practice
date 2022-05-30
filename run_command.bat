@@ -14,6 +14,8 @@ REM call %var[10]%
 REM --- Define comment out prefix ---
 set comment="###"
 
+set csv_folder="csv_report_%BUILD_NUMBER%"
+
 REM --- Run command ---
 for /l %%n in (1,1,%count%) do (
     Echo.!var[%%n]! | findstr /C:%comment%>nul || (
