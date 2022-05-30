@@ -1,0 +1,11 @@
+### Install additional reporters: htmlextra
+### https://github.com/DannyDainton/newman-reporter-htmlextra
+### npm install -g newman-reporter-htmlextra
+###
+### Run local cli
+newman run "Test Data Driven.postman_collection.json" -e reqres.in.postman_environment.json -d Data.csv --disable-unicode --reporters cli,html,htmlextra
+newman run "Test Data Driven.postman_collection.json" -e reqres.in.postman_environment.json -d Data.json --disable-unicode --reporters cli,html,htmlextra
+###
+### Run from Jenkins - Github
+newman run "practice1\Test Data Driven.postman_collection.json" -e "practice1\reqres.in.postman_environment.json" -d "practice1\Data.csv" --disable-unicode --reporters cli,html,allure,htmlextra
+newman run "practice1\Test Data Driven.postman_collection.json" -e "practice1\reqres.in.postman_environment.json" -d "practice1\Data.json" --disable-unicode --reporters cli,html,htmlextra
