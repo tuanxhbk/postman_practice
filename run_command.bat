@@ -6,7 +6,7 @@ set root_report_folder=report_build_%BUILD_NUMBER%
 set report_csv_export= --reporter-csv-export 
 set csv_folder=%root_report_folder%\csv_report_%BUILD_NUMBER%
 set reporter_allure_export= --reporter-allure-export 
-set allure_folder=%root_report_folder%\allure_report_%BUILD_NUMBER%
+set allure_folder=%root_report_folder%
 set reporter_htmlextra_export= --reporter-htmlextra-export 
 set htmlextra_folder=%root_report_folder%\htmlextra_%BUILD_NUMBER%
 
@@ -25,7 +25,6 @@ set comment="###"
 
 echo %csv_folder%
 mkdir %csv_folder%
-mkdir %allure_folder%
 mkdir %htmlextra_folder%
 
 REM --- Run command ---
