@@ -9,7 +9,7 @@ set reporter_allure_export= --reporter-allure-export
 set allure_folder=%root_report_folder%\allure-results
 set reporter_htmlextra_export= --reporter-htmlextra-export 
 set htmlextra_folder=%root_report_folder%\htmlextra
-set newman_option= --disable-unicode --reporters cli,allure,htmlextra,csv 
+set newman_option= --disable-unicode --reporters cli,allure,htmlextra,csv
 
 REM --- Read commands from file ---
 set count=0
