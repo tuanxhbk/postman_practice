@@ -9,6 +9,11 @@ REM echo %count%
 REM echo %var[10]%
 REM call %var[10]%
 
-for /l %%n in (1,1,%count%) do ( 
-   call !var[%%n]! 
+set comment = ###
+
+for /l %%n in (1,1,%count%) do (
+    Echo.!var[%%n]! | findstr /C:"###">nul || (
+    echo !var[%%n]!
+    call !var[%%n]!
+    )
 )
