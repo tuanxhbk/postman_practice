@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 REM --- Set report folder ---
-set root_report_folder=report_build_%BUILD_NUMBER%
+set root_report_folder=report\build_%BUILD_NUMBER%
 set report_csv_export= --reporter-csv-export 
 set csv_folder=%root_report_folder%\csv_report
 set reporter_allure_export= --reporter-allure-export 
