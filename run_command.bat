@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 
-REM --- Read command from file ---
+REM --- Read commands from file ---
 set count=0
 for /f "tokens=*" %%x in (command.txt) do (
     set /a count+=1
