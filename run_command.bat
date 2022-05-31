@@ -32,11 +32,5 @@ REM --- Run commands ---
 for /l %%n in (1,1,%count%) do (
     Echo.!var[%%n]! | findstr /C:%comment%>nul || (
     echo !var[%%n]!
-    call !var[%%n]!
-    if %ERRORLEVEL% EQU 0 (
-        echo Success
-    ) else (
-        echo Failure Reason Given is %errorlevel%
-        )
-    )
+    !var[%%n]!
 )
