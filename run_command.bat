@@ -32,5 +32,6 @@ REM --- Run commands ---
 for /l %%n in (1,1,%count%) do (
     Echo.!var[%%n]! | findstr /C:%comment%>nul || (
     echo !var[%%n]!
-    !var[%%n]!
+    call !var[%%n]!
+    )
 )
